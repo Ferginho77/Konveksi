@@ -4,53 +4,120 @@
     @section('title', 'Dashboard')
 
     @section('content')
-    
-       <div class="row">
-            <div class="row mt-5">
 
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-primary text-white mb-4">
-                    <div class="card-body">Jadwal Operator <i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/kalender">View Details</a>
-                        <div class="small text-white">
-                            <svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false"
-                                data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 256 512">
-                                <path fill="currentColor"
-                                    d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
+       <div class="container-fluid mt-n22 px-6">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <!-- Page header -->
+              <div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="mb-2 mb-lg-0">
+                    <h3 class="mb-0  text-white">Produk</h3>
+                  </div>
                 </div>
+              </div>
             </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">Produk</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-briefcase fs-4"></i>
+                       <a href="/manajemen">View More</a>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">{{ $barang }}</h1>
+                    <p class="mb-0"><span class="text-dark me-2"></span>Produk aktif</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">Karyawan</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-list-task fs-4"></i>
+                       <a href="/manajemen">View More</a>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">{{ $karyawan }}</h1>
+                    <p class="mb-0"><span class="text-dark me-2"></span>Total karyawan</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">Stok</h4>
+                    </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-people fs-4"></i>
+                       <a href="/manajemen">View More</a>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">1000</h1>
+                    <p class="mb-0"><span class="text-dark me-2"></span>Item Tersedia</p>
+                  </div>
+                </div>
+              </div>
 
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-success text-white mb-4">
-                    <div class="card-body">Manajemen Karyawan <i class="fa-solid fa-list-check"></i></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <a class="small text-white stretched-link" href="/manajemen">View Details</a>
-                        <div class="small text-white">
-                            <svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false"
-                                data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 256 512">
-                                <path fill="currentColor"
-                                    d="M246.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 41.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="col-xl-3 col-md-6">
-                <div class="card bg-info text-white mb-4">
-                    <div class="card-body">Operator Aktif Hari Ini <i class="fa-solid fa-user-check"></i></div>
-                    <div class="card-footer d-flex align-items-center justify-content-between">
-                        <span class="small text-white">Karyawan</span>
+            <div class="col-xl-3 col-lg-6 col-md-12 col-12 mt-6">
+              <!-- card -->
+              <div class="card ">
+                <!-- card body -->
+                <div class="card-body">
+                  <!-- heading -->
+                  <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                    <div>
+                      <h4 class="mb-0">Productivity</h4>
                     </div>
+                    <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                      <i class="bi bi-bullseye fs-4"></i>
+                       <a href="/manajemen">View More</a>
+                    </div>
+                  </div>
+                  <!-- project number -->
+                  <div>
+                    <h1 class="fw-bold">90%</h1>
+                    <p class="mb-0"><span class="text-success me-2"></span>Target Produksi</p>
+                  </div>
                 </div>
+              </div>
             </div>
-       </div>
+          </div>
     @endsection
 </div>

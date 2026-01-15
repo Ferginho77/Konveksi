@@ -10,6 +10,7 @@ class Karyawan extends Model
     protected $primaryKey = 'IdKaryawan';
     public $incrementing = true;
     protected $keyType = 'int';
+    
     protected $fillable = 
     ['NamaKaryawan', 
     'Posisi', 
