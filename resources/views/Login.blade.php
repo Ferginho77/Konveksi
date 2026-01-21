@@ -1,10 +1,19 @@
-<div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LOGIN</title>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div>
    <div>
-      @extends('layouts.header')
-
-    @section('title', 'LOGIN')
-
-    @section('content')
     <main>
     <div class="d-flex justify-content-center align-items-center vh-100 position-relative">
         <div class="card shadow-lg border-0 rounded-lg p-4 p-lg-5 " style=" position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
@@ -74,6 +83,8 @@
         }
     }
 </style>
-@endsection
 </div>
 </div>
+</body>
+</html>
+

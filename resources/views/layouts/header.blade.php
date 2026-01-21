@@ -15,9 +15,13 @@
 </head>
 
 <body>
-    {{-- @include('layouts.nav') --}}
     <main>
-        <div class="container" style="margin-top:65px ">
+        <div id="db-wrapper">
+
+            {{-- Sidebar --}}
+            @include('layouts.sidebar')
+        </div>
+        <div class="container">
             @yield('content')
         </div>
     </main>

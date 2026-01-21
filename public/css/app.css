@@ -1,0 +1,13 @@
+ .sidebar {
+    position: fixed;
+    top: 0;                 /* KUNCI UTAMA */
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: #212529;
+    z-index: 1000;
+}
+.main-content {
+    margin-left: 260px;     /* selebar sidebar */
+    min-height: 100vh;
+}

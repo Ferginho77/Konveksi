@@ -11,11 +11,10 @@ class DashboardController extends Controller
     public function index(){
     $karyawan = Karyawan::count();
     $barang = Barang::count();
+    $tampil = Karyawan::all();
 
 
-    return view('Dashboard', compact('karyawan', 'barang'));
+    return view('Dashboard', compact('karyawan', 'barang', 'tampil'));
 
     }
-
-
 }
