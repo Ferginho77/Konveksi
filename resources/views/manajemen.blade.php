@@ -1,10 +1,10 @@
 <div>
     @extends('layouts.header')
-    
+
      @section('title', 'Manajemen Karyawan')
      @section('content')
 <div class="container mt-4">
-    <a href="/" class="btn btn-danger">Kembali</a>
+    <a href="/dashboard" class="btn btn-danger">Kembali</a>
     <div class="card mt-4">
             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                 <div class="section-title mb-0">
@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="mb-2">
-                <button 
+                <button
                 data-bs-toggle="modal"
                 data-bs-target="#TambahKaryawan"
                 class="btn btn-success btn-sm">Tambah Karyawan</button>
@@ -36,7 +36,7 @@
             <td>{{ number_format($k->Gaji, 0, ',', '.') }}</td>
             <td>
                 @if($k->Status == 'Aktif')
-                    <span class="fs-6 badge bg-success">Aktif</span> 
+                    <span class="fs-6 badge bg-success">Aktif</span>
                 @else
                     <span class="fs-6 badge bg-secondary">NonAktif</span>
                 @endif

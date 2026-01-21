@@ -6,6 +6,12 @@
     @section('content')
 
        <div class="container-fluid mt-n22 px-6">
+        {{-- <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                <button type="submit" onclick="return confirm('Ente Yakin Mau Keluar Aplikasi?')" class="nav-link btn btn-link text-light bg-danger p-2" style="text-decoration: none;">Logout <i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                </form> --}}
           <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
               <!-- Page header -->
