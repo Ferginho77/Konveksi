@@ -1,10 +1,9 @@
-@extends('layouts.header')
+<div>
+    @extends('layouts.header')
 
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="overlay-gelap"></div>
-
 <div class="container py-4">
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
@@ -18,20 +17,24 @@
         <div class="col-md-5">
             <div class="card shadow-lg border-0 h-100">
                 <div class="card-header bg-primary text-white text-center py-3">
-                    <h5 class="mb-0 fw-bold">Input Barang</h5>
+                    <h5 class="mb-0 fw-bold">Input Produk</h5>
                 </div>
                 <div class="card-body p-4">
-                    <form action="{{ route('barang.tambah') }}" method="POST">
+                    <form action="" method="POST">
                         @csrf
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Nama Barang</label>
-                            <input type="text" name="NamaBarang" class="form-control" placeholder="Masukan nama barang" required>
+                            <label class="form-label fw-bold">Nama Produk</label>
+                            <input type="text" name="Namaproduk" class="form-control" placeholder="Masukan nama barang" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">Stok</label>
                             <input type="number" name="Stok" class="form-control" placeholder="0" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Tanggal Masuk</label>
+                            <input type="date" name="TanggalMasuk" class="form-control" placeholder="0" required>
                         </div>
 
                         <div class="mb-3">
@@ -43,7 +46,7 @@
                             <button type="submit" class="btn btn-success fw-bold py-2">
                                 Simpan ke Database
                             </button>
-                            <a href="/barang" class="btn btn-light btn-sm text-muted">
+                            <a href="/produk" class="btn btn-light btn-sm text-muted">
                                 Batal
                             </a>
                         </div>
@@ -56,43 +59,27 @@
         <div class="col-md-7">
             <div class="card shadow-lg border-0 h-100">
                 <div class="card-header bg-dark text-white text-center py-3">
-                    <h5 class="mb-0 fw-bold">Daftar Barang</h5>
+                    <h5 class="mb-0 fw-bold">Daftar Produk</h5>
                 </div>
                 <div class="card-body p-3 table-responsive">
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary text-center">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Barang</th>
+                                <th>Nama Produk</th>
                                 <th>Stok</th>
+                                <th>Tanggal Masuk</th>
                                 <th>Deskripsi</th>
-                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($barang as $item)
+                            @forelse ($produk as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $item->NamaBarang }}</td>
+                                    <td>{{ $item->Namaproduk }}</td>
                                     <td class="text-center">{{ $item->Stok }}</td>
+                                    <td class="text-center">{{ $item->TanggalMasuk }}</td>
                                     <td>{{ $item->Deskripsi }}</td>
-                                    <td>
-                                       <button class="btn btn-primary btn-sm"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#Editbarang"
-                                            data-id="{{ $item->id }}"
-                                            data-namabarang="{{ $item->NamaBarang }}"
-                                            data-stok="{{ $item->Stok }}"
-                                            data-deskripsi="{{ $item->Deskripsi }}"
-                                        >
-                                            Edit
-                                        </button>
-                                        <form action="{{ route('barang.destroy', $item->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus karyawan ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-sm btn-danger">Hapus</button>
-                                        </form>
-                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -109,5 +96,5 @@
 
     </div>
 </div>
-@include('modals.editbarang');
 @endsection
+</div>

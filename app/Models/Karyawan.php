@@ -10,10 +10,15 @@ class Karyawan extends Model
     protected $primaryKey = 'IdKaryawan';
     public $incrementing = true;
     protected $keyType = 'int';
-    
-    protected $fillable = 
-    ['NamaKaryawan', 
-    'Posisi', 
-    'Gaji', 
+
+    protected $fillable =
+    ['NamaKaryawan',
+    'Posisi',
+    'Gaji',
     'Status'];
+
+      public function pendapatan()
+    {
+        return $this->hasMany(Pendapatan::class, 'IdKaryawan', 'id');
+    }
 }

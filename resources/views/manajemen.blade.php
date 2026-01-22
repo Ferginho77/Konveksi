@@ -3,7 +3,7 @@
 
      @section('title', 'Manajemen Karyawan')
      @section('content')
-<div class="container-fluid px-6" style="margin-top:0;">
+<div class="container py-4">
     <div class="card mt-4">
             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                 <div class="section-title mb-0">

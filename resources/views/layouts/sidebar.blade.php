@@ -47,7 +47,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white-50" href="#">
+                            <a class="nav-link text-white-50" href="/pendapatan">
                                 Total Pendapatan
                             </a>
                         </li>
@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white-50" href="#">
+                            <a class="nav-link text-white-50" href="/produk">
                                 Ketersediaan Produk
                             </a>
                         </li>
@@ -106,7 +106,7 @@
     </div>
 </nav>
 <style>
-   
+
 
     .navbar-vertical {
     width: 260px;
