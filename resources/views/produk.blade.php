@@ -5,9 +5,17 @@
 
 @section('content')
 <div class="container py-4">
+
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
             <i class="bi bi-check-circle-fill me-2"></i> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ session('error') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
@@ -70,6 +78,7 @@
                                 <th>Stok</th>
                                 <th>Tanggal Masuk</th>
                                 <th>Deskripsi</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,6 +89,15 @@
                                     <td class="text-center">{{ $item->Stok }}</td>
                                     <td class="text-center">{{ $item->TanggalMasuk }}</td>
                                     <td>{{ $item->Deskripsi }}</td>
+                                    <td>
+                                     <button class="btn btn-primary btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#EditStok"
+                                        data-id="{{ $item->id }}"
+                                        data-nama="{{ $item->Namaproduk }}"
+                                        data-stok="{{ $item->Stok }}"
+                                    >Edit</button>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -96,5 +114,6 @@
 
     </div>
 </div>
+@include('modals.editstok')
 @endsection
 </div>

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -37,6 +38,7 @@ Route::post('/karyawan/edit', [KaryawanController::class, 'EditKaryawan'])->name
 Route::get('/barang', [BarangController::class, 'index'])->name('barang');
 Route::post('barang', [BarangController::class, 'store'])->name('barang.tambah');
 Route::post('/barang/edit', [BarangController::class, 'EditBarang'])->name('barang.edit');
+Route::post('/produk/editStok', [ProdukController::class, 'EditStok'])->name('produk.editStok');
 
 //Produk Route
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
@@ -45,3 +47,6 @@ Route::delete('/barang-hapus/{id}', [BarangController::class, 'HapusBarang'])->n
 
 //Pendapatan Route
 Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
+
+//FORM Route
+Route::get('/formkaryawan', [FormController::class, 'index'])->name('formkaryawan');

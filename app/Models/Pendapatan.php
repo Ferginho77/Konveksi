@@ -9,8 +9,10 @@ class Pendapatan extends Model
     protected $table = 'pendapatan';
 
     protected $fillable =
-    ['Jumlah',
-    'IdKaryawan'
+    [
+    'IdKaryawan',
+    'JumlahPendapatanAwal',
+    'JumlahPendapatanAkhir',
     ];
 
     public function karyawan()

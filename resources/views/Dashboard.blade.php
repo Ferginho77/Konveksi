@@ -32,7 +32,7 @@
                     </div>
                     <div>
                         <h1 class="fw-bold">{{ $barang }}</h1>
-                        <p class="mb-0">Ketersediaan Stok</p>
+                        <p class="mb-0">Ketersediaan Bahan Kelambu</p>
                     </div>
                 </div>
             </div>
@@ -60,15 +60,15 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <h4 class="mb-0 fs-5 text-muted">Jumlah Produk Tersedia</h4>
+                            <h4 class="mb-0 fs-5 text-muted">Jumlah Kelambu Tersedia</h4>
                         </div>
                         <div class="icon-shape icon-md bg-light-primary text-primary rounded-2">
                             <i class="fas fa-boxes"></i>
                         </div>
                     </div>
                     <div>
-                        <h1 class="fw-bold">0</h1>
-                        <p class="mb-0">Jumlah Produk Tersedia</p>
+                        <h1 class="fw-bold">{{ $produk->sum('Stok') }}</h1>
+                        <p class="mb-0">Jumlah Kelambu Tersedia</p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     
     <div class="row mt-5">
         <div class="col-xl-8 col-lg-12 col-md-12 col-12">
-            <div class="card h-100 shadow-sm">
+            <div class="card h-100 shadow-sm p-3">
                 <div class="card-header bg-white py-4">
                     <h4 class="mb-0">Daftar Karyawan</h4>
                 </div>
@@ -107,49 +107,6 @@
     </div>
 </div>
 <style>
-    /* Warna ungu Dashboard */
-    .bg-primary {
-        background-color: #624bff !important;
-    }
-
-    /* Padding untuk area header */
-    .pt-10 {
-        padding-top: 5rem !important;
-    }
-    .pb-21 {
-        padding-bottom: 12rem !important;
-    }
-
-    /* Margin negatif untuk menaikkan card ke atas area ungu */
-    .mt-n22 {
-        margin-top: -11rem !important;
-    }
-
-    /* Styling tombol putih di header */
-    .btn-white {
-        background-color: #fff;
-        color: #624bff;
-        border-color: #fff;
-        font-weight: 600;
-    }
-    .btn-white:hover {
-        background-color: #f8f9fa;
-        color: #513cdb;
-    }
-
-    /* Styling icon shape */
-    .icon-shape {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .bg-light-primary {
-        background-color: #e7e4ff !important;
-    }
-    .text-primary {
-        color: #624bff !important;
-    }
+ 
 </style>
 @endsection

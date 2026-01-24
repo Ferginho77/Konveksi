@@ -3,7 +3,7 @@
 
      @section('title', 'Manajemen Karyawan')
      @section('content')
-<div class="container py-4">
+<div class="row g-4">
     <div class="card mt-4">
             <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap">
                 <div class="section-title mb-0">
@@ -62,9 +62,10 @@
                     </tbody>
                 </table>
             </div>
-    </div>
+</div>
     @endsection
+    @include('modals.tambahkaryawan');
+@include('modals.editkaryawan');
+
 </div>
 
-@include('modals.tambahkaryawan');
-@include('modals.editkaryawan');
