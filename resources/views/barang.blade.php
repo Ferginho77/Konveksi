@@ -96,7 +96,7 @@
             </table>
         </div>
     </div>
-
+@include('modals.editbarang')
 </div>
 @endsection
 

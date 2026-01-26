@@ -12,25 +12,37 @@ class PendapatanController extends Controller
 
         $pendapatan = Pendapatan::all();
         $karyawans = Karyawan::all();
+        $totalpendapatan = 0;
 
-        $pendapatan->map(function ($item) {
-        $item->total = $item->JumlahPendapatanAwal + $item->JumlahPendapatanAkhir;
-        return $item;
-    });
-        return view('pendapatan', compact('pendapatan', 'karyawans'));
+        return view('pendapatan', compact('pendapatan', 'karyawans', 'totalpendapatan'));
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'IdKaryawan' => 'required|exists:karyawans,id',
-            'JumlahPendapatanAwal' => 'required|numeric|min:0',
-        ]);
+   public function filtering(Request $request)
+{
+    $request->validate([
+        'IdKaryawan' => 'required',
+        'start_date' => 'nullable|date',
+        'end_date' => 'nullable|date',
+    ]);
 
-        Pendapatan::create([
-            'IdKaryawan' => $request->IdKaryawan,
-            'JumlahPendapatanAwal' => $request->JumlahPendapatanAwal,
-        ]);
+    $query = Pendapatan::with('karyawan')
+        ->where('IdKaryawan', $request->IdKaryawan);
 
-        return redirect()->back()->with('success', 'Pendapatan berhasil ditambahkan.');
+    if ($request->filled('start_date') && $request->filled('end_date')) {
+        $query->whereBetween('Tanggal', [
+            $request->start_date,
+            $request->end_date
+        ]);
     }
+
+    $pendapatan = $query->orderBy('Tanggal', 'desc')->get();
+    $karyawans = Karyawan::all();
+    $totalpendapatan = $pendapatan->sum('Jumlah');
+
+    return view('pendapatan', compact(
+        'pendapatan',
+        'karyawans',
+        'totalpendapatan'
+    ));
+}
 }

@@ -34,10 +34,7 @@
                             <input type="text" name="Namaproduk" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="Masukan nama produk" required>
                         </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold text-primary">Stok</label>
-                            <input type="number" name="Stok" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="0" min="0" required>
-                        </div>
+                            <input type="hidden" value="0" name="Stok" class="form-control form-control-lg rounded-pill shadow-sm" placeholder="0" min="0" required>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold text-primary">Tanggal Masuk</label>

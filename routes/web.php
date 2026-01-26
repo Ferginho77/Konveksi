@@ -21,33 +21,33 @@ Route::get('/', function () {
 // });
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
+Route::middleware(['auth'])->group(function () {
 //DASHBOARD ROUTE
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('Dashboard');
-
-Route::post('/', [LoginController::class, 'login'])->name('login');
-
 //MANAJEMEN ROUTE
 Route::get('/manajemen', [KaryawanController::class, 'index'])->name('manajemen');
-
 //KARYAWAN ROUTE
 Route::post('/karyawan-tambah', [KaryawanController::class, 'TambahKaryawan'])->name('karyawan.tambah');
 Route::delete('/karyawan-hapus/{id}', [KaryawanController::class, 'HapusKaryawan'])->name('karyawan.destroy');
 Route::post('/karyawan/edit', [KaryawanController::class, 'EditKaryawan'])->name('karyawan.edit');
-
 //BARANG ROUTE
 Route::get('/barang', [BarangController::class, 'index'])->name('barang');
 Route::post('barang', [BarangController::class, 'store'])->name('barang.tambah');
 Route::post('/barang/edit', [BarangController::class, 'EditBarang'])->name('barang.edit');
 Route::post('/produk/editStok', [ProdukController::class, 'EditStok'])->name('produk.editStok');
-
 //Produk Route
 Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
 Route::post('produk', [ProdukController::class, 'TambahProduk'])->name('produk.tambah');
 Route::delete('/barang-hapus/{id}', [BarangController::class, 'HapusBarang'])->name('barang.destroy');
-
 //Pendapatan Route
 Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
+Route::get('/manajemen/pendapatan', [PendapatanController::class, 'filtering'])->name('manajemen.pendapatan');
+});
 
 
+Route::post('/', [LoginController::class, 'login'])->name('login');
 //FORM Route
 Route::get('/formkaryawan', [FormController::class, 'index'])->name('formkaryawan');
+Route::post('/tambahPendapatan', [FormController::class, 'TambahPendapatan'])->name('tambah.pendapatan');
+Route::get('/filtering/pendapatan', [FormController::class, 'filtering'])->name('filtering.pendapatan');
+Route::post('/', [LoginController::class, 'login'])->name('login');

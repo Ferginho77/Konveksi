@@ -27,27 +27,15 @@
                             @forelse ($pendapatan as $item)
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                <td>
-                                    {{ $item->karyawan->NamaKaryawan ?? '-' }}
-                                </td>
-                                <td class="text-center">
-                                    {{ $item->total }}
-                                </td>
-                                <td class="text-center">
-                                    {{ $item->created_at->format('d-m-Y') }}
-                                </td>
-                                <td class="text-center">
-                                    Rp {{ number_format($item->karyawan->Gaji ?? 0, 0, ',', '.') }}
-                                </td>
-                                <td class="text-center">
-                                    Rp {{ number_format(($item->total * ($item->karyawan->Gaji ?? 0)), 0, ',', '.') }}
-                                </td>
+                                <td>{{ $item->karyawan->NamaKaryawan ?? '-' }}</td>
+                                <td class="text-center">{{ $item->Jumlah }}</td>
+                                <td class="text-center">{{ $item->created_at->format('d-m-Y') }}</td>
+                                <td class="text-center">Rp {{ number_format($item->karyawan->Gaji ?? 0, 0, ',', '.') }}</td>
+                                <td class="text-center">Rp {{ number_format(($item->Jumlah * ($item->karyawan->Gaji ?? 0)), 0, ',', '.') }}</td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6" class="text-center text-muted">
-                                    Data pendapatan belum tersedia
-                                </td>
+                                <td colspan="6" class="text-center text-muted">Data pendapatan belum tersedia</td>
                             </tr>
                             @endforelse
                         </tbody>
@@ -55,41 +43,87 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="card shadow-lg border-0 h-100">
-                <div class="card-header bg-primary text-white text-center py-3">
-                    <h5 class="mb-0 fw-bold">Input Pendapatan</h5>
-                </div>
-                <div class="card-body p-4">
-                    <form action="" method="POST">
-                        @csrf
-                    <div class="mb-3">
-                            <label for="NamaKaryawan" class="form-label fw-bold">Nama Karyawan</label>
-                            <select name="NamaKaryawan" id="karyawan_id" class="form-select" required>
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h5 class="mb-0 fw-bold">Lihat Pendapatan Karyawan</h5>
+                    </div>
+                <div class="card-body">
+                    <form method="GET" action="{{ route('manajemen.pendapatan') }}">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Pilih Karyawan</label>
+                            <select name="IdKaryawan" class="form-select form-control-lg rounded-pill shadow-sm" required>
                                 <option value="" disabled selected>Pilih Karyawan</option>
                                 @foreach ($karyawans as $karyawan)
-                                    <option value="{{ $karyawan->id }}">{{ $karyawan->NamaKaryawan }}</option>
+                                    <option value="{{ $karyawan->IdKaryawan }}" {{ request('IdKaryawan') == $karyawan->IdKaryawan ? 'selected' : '' }}>{{ $karyawan->NamaKaryawan }}</option>
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="mb-3">
-                            <label for="Jumlah" class="form-label fw-bold">Total Pendapatan</label>
-                            <input type="number" name="JumlahPendapatanAwal" id="Jumlah" class="form-control" placeholder="Masukkan total pendapatan" required>
-                    </div>
-                        <div class="d-grid gap-2 mt-4">
-                            <button type="submit" class="btn btn-success fw-bold py-2">
-                                Simpan
-                            </button>
-                            <a href="/produk" class="btn btn-light btn-sm text-muted">
-                                Batal
-                            </a>
+                            <label class="form-label">Dari tanggal</label>
+                            <input class="form-control form-control-lg rounded-pill shadow-sm" type="date" name="start_date" value="{{ request('start_date') }}">
                         </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sampai tanggal</label>
+                            <input class="form-control form-control-lg rounded-pill shadow-sm" type="date" name="end_date" value="{{ request('end_date') }}">
+                        </div>
+                        <button class="btn btn-primary w-100" type="submit">Cari</button>
                     </form>
+                    <p class="text-muted small mt-3 mb-0">Pilih karyawan untuk menampilkan pendapatan</p>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+     <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+                    <h5 class="mb-0 fw-bold">Data Pendapatan Terfilter</h5>
+                    @if(request()->has('IdKaryawan'))
+                        <span class="badge bg-white text-primary fs-6">Total: {{ $totalpendapatan }}</span>
+                    @endif
+                </div>
+                <div class="card-body p-3 table-responsive">
+                    @if(request()->has('IdKaryawan'))
+                        <div class="mb-3">
+                            <a href="/pendapatan" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                                <i class="fas fa-arrow-left me-1"></i> Reset / Kembali
+                            </a>
+                        </div>
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-secondary text-center">
+                                <tr>
+                                    <th width="50px">No</th>
+                                    <th>Nama Karyawan</th>
+                                    <th>Jumlah Pendapatan</th>
+                                    <th>Tanggal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($pendapatan as $p)
+                                    <tr>
+                                        <td class="text-center">{{ $loop->iteration }}</td>
+                                        <td>{{ $p->karyawan->NamaKaryawan }}</td>
+                                        <td class="text-center fw-bold text-primary">{{ $p->Jumlah }}</td>
+                                        <td class="text-center">{{ $p->Tanggal }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="text-center text-muted py-4">Data tidak ditemukan untuk kriteria ini</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    @else
+                        <div class="text-center py-5">
+                            <i class="fas fa-info-circle fa-3x text-light mb-3"></i>
+                            <h5 class="text-muted">Silakan pilih karyawan dan tanggal, lalu klik tombol <b>Cari</b></h5>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
     </div>
     </div>

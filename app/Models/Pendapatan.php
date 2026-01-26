@@ -11,8 +11,8 @@ class Pendapatan extends Model
     protected $fillable =
     [
     'IdKaryawan',
-    'JumlahPendapatanAwal',
-    'JumlahPendapatanAkhir',
+    'Jumlah',
+    'Tanggal',
     ];
 
     public function karyawan()
