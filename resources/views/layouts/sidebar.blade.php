@@ -108,19 +108,27 @@
 <style>
 
 
-    .navbar-vertical {
-    width: 260px;
-    min-height: 100vh;
-    position: fixed;
+.navbar-vertical {
+  width: 260px;
+  min-height: 100vh;
+  position: fixed;
+  background-color: #212529;
+  overflow-y: auto;
+  margin-left: 0;
+  transition: margin 0.3s ease;
 }
 
 #page-content {
-    margin-left: 260px;
+  margin-left: 260px;
+  transition: margin 0.3s ease;
 }
 
-.nav-link.active {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 0.375rem;
+body.sidebar-collapsed .navbar-vertical {
+  margin-left: -260px;
+}
+
+body.sidebar-collapsed #page-content {
+  margin-left: 0;
 }
 
 </style>

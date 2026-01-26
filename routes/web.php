@@ -48,5 +48,6 @@ Route::delete('/barang-hapus/{id}', [BarangController::class, 'HapusBarang'])->n
 //Pendapatan Route
 Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
 
+
 //FORM Route
 Route::get('/formkaryawan', [FormController::class, 'index'])->name('formkaryawan');

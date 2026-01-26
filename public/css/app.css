@@ -13,34 +13,39 @@
 }
 
    /* Warna ungu Dashboard */
-    .bg-primary {
+.bg-primary {
         background-color: #724bff !important;
     }
 
     /* Padding untuk area header */
-    .pt-10 {
+.pt-10 {
         padding-top: 5rem !important;
     }
-    .pb-21 {
+.pb-21 {
         padding-bottom: 12rem !important;
     }
 
     /* Margin negatif untuk menaikkan card ke atas area ungu */
-    .mt-n22 {
+.mt-n22 {
         margin-top: -11rem !important;
     }
 
     /* Styling icon shape */
-    .icon-shape {
+.icon-shape {
         width: 40px;
         height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .bg-light-primary {
+.bg-light-primary {
         background-color: #e7e4ff !important;
     }
-    .text-primary {
+.text-primary {
         color: #624bff !important;
     }
+
+.collapse {
+    transition: height 0.25s ease;
+}
+

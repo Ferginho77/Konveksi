@@ -4,16 +4,17 @@
     @include('layouts.header')
     <title>@yield('title')</title>
 </head>
-
-<body class="bg-light">
+<body>
 <div id="db-wrapper">
 
-    {{-- Sidebar --}}
     @include('layouts.sidebar')
 
-    {{-- Page Content --}}
-    <div id="page-content">
-        @yield('content')
+    <div class="main-wrapper">
+        @include('layouts.topbar')
+
+        <main id="page-content" class="p-4">
+            @yield('content')
+        </main>
     </div>
 
 </div>
