@@ -11,7 +11,6 @@
             <!-- CARD HEADER -->
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex align-items-center gap-3">
-                    <img src="{{ asset('img/staff.png') }}" width="45" alt="Karyawan">
                     <h5 class="mb-0 fw-bold">Manajemen Karyawan</h5>
                 </div>
 
