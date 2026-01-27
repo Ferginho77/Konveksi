@@ -87,7 +87,7 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                       <tbody>
                             @foreach($tampil as $t)
                             <tr>
                                 <td class="align-middle fw-bold text-dark">
@@ -99,11 +99,14 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-muted">{{ $t->Posisi }}</td>
-                               @if($t->Status == 'Aktif')
+                                <td class="align-middle">
+                                    @if($t->Status == 'Aktif')
                                         <span class="badge bg-light-success text-success">Aktif</span>
                                     @else
                                         <span class="badge bg-light-secondary text-secondary">NonAktif</span>
                                     @endif
+                                </td>
+
                             </tr>
                             @endforeach
                         </tbody>
