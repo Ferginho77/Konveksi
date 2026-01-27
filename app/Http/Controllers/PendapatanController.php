@@ -10,7 +10,9 @@ class PendapatanController extends Controller
 {
     public function index(){
 
-        $pendapatan = Pendapatan::all();
+        $pendapatan = Pendapatan::with('karyawan')
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(10);
         $karyawans = Karyawan::all();
         $totalpendapatan = 0;
 

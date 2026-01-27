@@ -88,7 +88,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tampil->take(10) as $t)
+                            @foreach($tampil as $t)
                             <tr>
                                 <td class="align-middle fw-bold text-dark">
                                     <div class="d-flex align-items-center">

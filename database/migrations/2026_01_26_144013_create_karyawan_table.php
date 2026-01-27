@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendapatan', function (Blueprint $table) {
-            $table->id();
-            $table->integer('IdKaryawan');
-            $table->string('Jumlah');
-            $table->date('Tanggal');
+        Schema::create('karyawan', function (Blueprint $table) {
+            $table->id('IdKaryawan');
+            $table->string('NamaKaryawan');
+            $table->enum('Posisi', ['Cutting', 'Polet', 'Seleting', 'Renda', 'Obras', 'Packing']);
+            $table->string('Gaji');
+            $table->enum('Status', ['Aktif', 'NonAktif']);
             $table->timestamps();
-
-            $table->foreign('IdKaryawan')->references('IdKaryawan')->on('karyawan')->onDelete('cascade');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pendapatan');
+        Schema::dropIfExists('karyawan');
     }
 };
