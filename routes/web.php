@@ -23,7 +23,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::middleware(['auth'])->group(function () {
 //DASHBOARD ROUTE
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('Dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //MANAJEMEN ROUTE
 Route::get('/manajemen', [KaryawanController::class, 'index'])->name('manajemen');
 //KARYAWAN ROUTE
