@@ -99,9 +99,11 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-muted">{{ $t->Posisi }}</td>
-                                <td class="align-middle">
-                                    <span class="badge bg-light-success text-success">Aktif</span>
-                                </td>
+                               @if($t->Status == 'Aktif')
+                                        <span class="badge bg-light-success text-success">Aktif</span>
+                                    @else
+                                        <span class="badge bg-light-secondary text-secondary">NonAktif</span>
+                                    @endif
                             </tr>
                             @endforeach
                         </tbody>
