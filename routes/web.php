@@ -42,6 +42,7 @@ Route::delete('/barang-hapus/{id}', [BarangController::class, 'HapusBarang'])->n
 //Pendapatan Route
 Route::get('/pendapatan', [PendapatanController::class, 'index'])->name('pendapatan');
 Route::get('/manajemen/pendapatan', [PendapatanController::class, 'filtering'])->name('manajemen.pendapatan');
+Route::get('/pendapatan/sortir', [PendapatanController::class, 'Sortir'])->name('pendapatan.sortir');
 });
 
 

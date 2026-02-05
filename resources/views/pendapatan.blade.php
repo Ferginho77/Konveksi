@@ -8,9 +8,34 @@
     <div class="row g-4">
         <div class="col-md-7">
             <div class="card shadow-lg border-0 h-100">
-                <div class="card-header bg-primary text-white text-center py-3">
-                    <h5 class="mb-0 fw-bold">Daftar Pendapatan</h5>
+               <div class="card-header bg-primary text-white py-3">
+                    <h5 class="mb-3 fw-bold text-center">Daftar Pendapatan</h5>
+
+                    <form action="{{ route('pendapatan.sortir') }}" method="GET" class="row g-2 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label text-white mb-1">Dari Tanggal</label>
+                            <input type="date" name="start_date" class="form-control"
+                                value="{{ request('start_date') }}">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label text-white mb-1">Sampai Tanggal</label>
+                            <input type="date" name="end_date" class="form-control"
+                                value="{{ request('end_date') }}">
+                        </div>
+
+                        <div class="col-md-4 d-flex gap-2">
+                            <button type="submit" class="btn btn-light fw-semibold">
+                                Filter
+                            </button>
+
+                            <a href="/pendapatan" class="btn btn-outline-light">
+                                Reset
+                            </a>
+                        </div>
+                    </form>
                 </div>
+
                 <div class="card-body p-3 table-responsive">
                     <table class="table table-bordered table-hover align-middle">
                         <thead class="table-secondary text-center">
@@ -19,7 +44,7 @@
                                 <th>Nama</th>
                                 <th>Total Pendapatan</th>
                                 <th>Tanggal</th>
-                                <th>Total Gaji</th>
+                                <th>Harga Per Pcs</th>
                                 <th>Hasil</th>
                             </tr>
                         </thead>
@@ -29,7 +54,7 @@
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $item->karyawan->NamaKaryawan ?? '-' }}</td>
                                 <td class="text-center">{{ $item->Jumlah }}</td>
-                                <td class="text-center">{{ $item->created_at->format('d-m-Y') }}</td>
+                                <td class="text-center">{{ $item->Tanggal }}</td>
                                 <td class="text-center">Rp {{ number_format($item->karyawan->Gaji ?? 0, 0, ',', '.') }}</td>
                                 <td class="text-center">Rp {{ number_format(($item->Jumlah * ($item->karyawan->Gaji ?? 0)), 0, ',', '.') }}</td>
                             </tr>
@@ -81,7 +106,10 @@
                 <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
                     <h5 class="mb-0 fw-bold">Data Pendapatan Terfilter</h5>
                     @if(request()->has('IdKaryawan'))
-                        <span class="badge bg-white text-primary fs-6">Total: {{ $totalpendapatan }}</span>
+                        <div class="d-flex gap-2 align-items-center">
+                            <span class="badge bg-white text-primary fs-6">Total: Rp {{ number_format($hasil ?? 0, 0, ',', '.') }}</span>
+                            <span class="badge bg-white text-primary fs-6">Total Pendapatan {{ $totalpendapatan }}</span>
+                        </div>
                     @endif
                 </div>
                 <div class="card-body p-3 table-responsive">

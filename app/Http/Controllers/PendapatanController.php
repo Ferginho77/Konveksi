@@ -41,10 +41,43 @@ class PendapatanController extends Controller
     $karyawans = Karyawan::all();
     $totalpendapatan = $pendapatan->sum('Jumlah');
 
+    $gaji = Karyawan::where('IdKaryawan', $request->IdKaryawan)->value('Gaji');
+    $hasil = $totalpendapatan * $gaji;
+    
+
+    return view('pendapatan', compact(
+        'pendapatan',
+        'karyawans',
+        'totalpendapatan',
+        'hasil'
+    ));
+}
+
+public function Sortir(Request $request)
+{
+    $request->validate([
+        'start_date' => 'nullable|date',
+        'end_date'   => 'nullable|date',
+    ]);
+
+    $query = Pendapatan::with('karyawan');
+
+    if ($request->filled('start_date') && $request->filled('end_date')) {
+        $query->whereBetween('Tanggal', [
+            $request->start_date . ' 00:00:00',
+            $request->end_date . ' 23:59:59'
+        ]);
+    }
+
+    $pendapatan = $query->orderBy('Tanggal', 'desc')->get();
+    $karyawans = Karyawan::all();
+    $totalpendapatan = $pendapatan->sum('Jumlah');
+
     return view('pendapatan', compact(
         'pendapatan',
         'karyawans',
         'totalpendapatan'
     ));
 }
+
 }

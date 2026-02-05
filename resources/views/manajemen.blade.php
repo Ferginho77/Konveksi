@@ -30,7 +30,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>Posisi</th>
-                                <th>Gaji</th>
+                                <th>Bayaran per Pcs</th>
                                 <th>Status</th>
                                 <th class="text-center">Aksi</th>
                             </tr>
